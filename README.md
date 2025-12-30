@@ -93,10 +93,20 @@ The `report.json` includes metrics, postprocess settings, winsorization bounds, 
 
 This runs prediction for every cutoff date (useful for time-aware evaluation):
 
+Cutoff mode (1 row per cutoff date):
+
 ```bash
 python -m services.knn_timeseries.predict_daybyday \
   --config configs/knn_tsla_tuned.yaml \
   --only-last \
+  --with-tpg
+```
+
+Full day-by-day history (all rows up to each cutoff):
+
+```bash
+python -m services.knn_timeseries.predict_daybyday \
+  --config configs/knn_tsla_tuned.yaml \
   --with-tpg
 ```
 
